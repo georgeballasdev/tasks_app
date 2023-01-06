@@ -3,4 +3,6 @@ from django.shortcuts import render
 
 @login_required
 def home(request):
-    return render(request, 'tasks/home.html')
+    projects = request.user.projects.all()
+    context = {'projects': projects}
+    return render(request, 'tasks/home.html', context)
