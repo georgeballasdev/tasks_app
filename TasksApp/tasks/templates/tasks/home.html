@@ -1,19 +1,24 @@
 {% extends 'tasks/base.html' %}
 {% block content %}
-    <h1>Home page for {{ user.username }}</h1>
-    <h2>Your Projects:</h2>
-    {% if projects %}
-        {% for project in projects %}
-            <p>Project: {{ project.title }}</p>
-            {% if project.tasks %}
-                {% for task in project.tasks.all %}
-                    <p>Task: {{ task.text }}</p>
-                {% endfor %}
-            {% else %}
-                <p>No tasks yet for this project</p>
-            {% endif %}
-        {% endfor %}
-    {% else %}
-        <p>No projects yet</p>
+    <h1>{{ user.username }}'s projects</h1>
+    <div id="projects">
+        {% if projects %}
+            {% for project in projects %}
+                <div class="project">
+                    <div class="project-title">{{ project.title }}</div>
+                    <div class="tasks">
+                        {% if project.tasks %}
+                            {% for task in project.tasks.all %}
+                                <div class="task">Task: {{ task.text }}</div>
+                            {% endfor %}
+                        {% else %}
+                            <p>No tasks yet for this project</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No projects yet</p>
     {% endif %}
+    </div>
 {% endblock %}

@@ -1,0 +1,49 @@
+#projects {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+}
+
+.project {
+    height: 15rem;
+    width: 20rem;
+    background-color: rgba(0, 255, 255, 0.761);
+    border-radius: 1.5rem;
+    
+}
+
+.project-title {
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    width: 100%;
+    height: 15%;
+    background-color: rgb(99, 99, 218);
+    color: rgb(239, 239, 238);
+    font-size: 2rem;
+}
+
+.tasks {
+    display: flex;
+    height: 85%;
+    flex-direction: column;
+    row-gap: 1rem;
+    overflow-y: scroll;
+    /* Hide scrollbar in Firefox and IE */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Hide scrollbar in webkit base browsers */
+.tasks::-webkit-scrollbar {
+    display: none;
+}
+.task {
+    font-size: 1.5rem;
+    letter-spacing: 0.15rem;
+    word-wrap: break-word;
+    background-color: antiquewhite;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+}

@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    width: 100%;
+    height: 10vh;
+    background-color: rgba(208, 62, 10, 0.855);
+}
+
+.navbar div a{
+    color:rgb(11, 3, 80);
+    font-size: 2rem;
+    font-weight: 700;
+    text-decoration: none;
+    margin: auto 20rem;
+}
+
+#content {
+    padding: 0 10rem;
+    height: 90vh;
+    background-color: rgb(244, 216, 205);
+    text-align: center;
+    overflow-y: scroll;
+    /* Hide scrollbar in Firefox and IE */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Hide scrollbar in webkit base browsers */
+#content::-webkit-scrollbar {
+    display: none;
+}
