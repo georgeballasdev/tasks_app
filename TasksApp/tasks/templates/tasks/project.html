@@ -1,0 +1,17 @@
+{% extends 'tasks/base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/project.css' %}">
+    <div id="project">
+        <div id="title">{{ project.title }}</div>
+        <div id="tasks">
+            {% if project.tasks.all %}
+                {% for task in project.tasks.all %}
+                    <div class="task">{{ task.text }}</div>
+                {% endfor %}
+            {% else %}
+                <p>No tasks yet for this project</p>
+            {% endif %}
+        </div>
+        <input type="text" id="add-task" placeholder="Add new task">
+{% endblock %}

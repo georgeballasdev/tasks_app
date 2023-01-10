@@ -2,16 +2,16 @@
 {% load static %}
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <h1>{{ user.username }}'s projects</h1>
     <div id="projects">
         {% if projects %}
             {% for project in projects %}
-                <div class="project">
-                    <div class="project-title" id="{{ project.id }}">
+                <div class="project" id="{{ project.id }}">
+                    <div class="project-title">
                         <div class="title-text">{{ project.title }}</div>
-                        <div class="add-button fa-solid fa-circle-plus fa-xs"></div>
                     </div>
+                    <div class="add-button fa-solid fa-circle-plus fa-xs"></div>
+                    <div class="remove-button fa-regular fa-circle-xmark fa-xs"></div>
                     <div class="tasks">
                         {% if project.tasks.all %}
                             {% for task in project.tasks.all %}

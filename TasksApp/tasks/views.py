@@ -10,6 +10,10 @@ def home(request):
     context = {'projects': projects}
     return render(request, 'tasks/home.html', context)
 
+class ProjectDetailView(LoginRequiredMixin, DetailView):
+    template_name = 'tasks/project.html'
+    model = Project
+
 class ProjectCreateView(LoginRequiredMixin, CreateView):
     template_name = 'tasks/new_project.html'
     model = Project

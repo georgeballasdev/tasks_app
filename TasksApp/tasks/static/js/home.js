@@ -2,7 +2,13 @@
 
 
 // Functions
-
+function smoothRemove(elm) {
+    $(elm).fadeTo(300, 0.01, function(){ 
+        $(elm).slideUp(150, function() {
+            $(elm).remove(); 
+        }); 
+    });
+}
 
 // Events
 $('.project-title').mouseenter(function() {
@@ -36,20 +42,36 @@ $('.project').click(function(e) {
         })
     }
 
+    // Remove project button clicked
+    else if (target.classList.contains('remove-button')){
+        let project = this;
+        let title = $($(project).find('.title-text')).text();
+        $.confirm({
+            boxWidth: '40%',
+            useBootstrap: false,
+            title: title,
+            content: 'Delete this project?',
+            buttons: {
+                delete: function () {
+                    console.log('Send ajax to remove project');
+                    smoothRemove(project);
+                },
+                cancel: function () {}
+            },
+        });
+    }
+
     // Task clicked
     else if (target.classList.contains('task')){
         let task_id = $(target).attr('id');
         console.log(window.location.host + '/' + task_id);
-        $(target).fadeTo(300, 0.01, function(){ 
-            $(this).slideUp(150, function() {
-                $(this).remove(); 
-            }); 
-        });
+        smoothRemove(target);
     }
 
     // Go to project detail view
     else {
-        console.log('goto project detail view');
+        let id = $(this).attr('id');
+        window.location.href = 'http://' + window.location.host + '/project/' + id + '/';
     }
 })
 
