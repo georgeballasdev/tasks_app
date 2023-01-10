@@ -4,8 +4,6 @@
 // Functions
 
 
-
-
 // Events
 $('.project-title').mouseenter(function() {
     let title = $(this).find('.title-text')[0];
@@ -19,7 +17,7 @@ $('.project-title').mouseleave(function() {
     let title = $(this).find('.title-text')[0];
     if (title.scrollWidth > title.offsetWidth){
         $(title).stop();
-        $(title).animate({left: '0'}, 3000);
+        $(title).animate({left: '0'}, 2000);
     }
 })
 
@@ -38,8 +36,21 @@ $('.project').click(function(e) {
         })
     }
 
-    // Other element clicked
-    // Do something
+    // Task clicked
+    else if (target.classList.contains('task')){
+        let task_id = $(target).attr('id');
+        console.log(window.location.host + '/' + task_id);
+        $(target).fadeTo(300, 0.01, function(){ 
+            $(this).slideUp(150, function() {
+                $(this).remove(); 
+            }); 
+        });
+    }
+
+    // Go to project detail view
+    else {
+        console.log('goto project detail view');
+    }
 })
 
 $('.project').mouseleave(function() {

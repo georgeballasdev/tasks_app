@@ -15,12 +15,12 @@
     position: relative;
 }
 
-.project:hover{
+.project:hover {
     box-shadow: 0 0 20px 0.1rem rgba(132, 7, 7, 0.63);
     transform: scale(1.01);
 }
 
-.project:hover .add-button{
+.project:hover .add-button {
     display: inline;
     transform: scale(1);
 }
@@ -54,7 +54,7 @@
 }
 
 .add-button:hover {
-    font-size: 1.8rem;
+    font-size: 105%;
 }
 
 .tasks {
@@ -80,6 +80,13 @@
     background-color: antiquewhite;
     padding: 0.5rem;
     border-radius: 1.5rem;
+    text-decoration: none;
+    user-select: none;
+}
+
+.task:hover {
+    text-decoration: line-through;
+    transform: scale(1.03);
 }
 
 .add-task {
@@ -91,4 +98,15 @@
     border-radius: 1rem;
     font-size: 1rem;
     padding: 0 1rem;
+}
+
+#add-project {
+    font-size: 12rem;
+    color: rgb(141, 41, 56);
+    text-decoration: none;
+    align-self: center;
+}
+
+#add-project:hover {
+    font-size: 13rem;
 }

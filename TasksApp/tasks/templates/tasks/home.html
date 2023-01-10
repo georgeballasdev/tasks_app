@@ -8,25 +8,24 @@
         {% if projects %}
             {% for project in projects %}
                 <div class="project">
-                    <div class="project-title">
+                    <div class="project-title" id="{{ project.id }}">
                         <div class="title-text">{{ project.title }}</div>
                         <div class="add-button fa-solid fa-circle-plus fa-xs"></div>
                     </div>
                     <div class="tasks">
-                        {% if project.tasks %}
+                        {% if project.tasks.all %}
                             {% for task in project.tasks.all %}
-                                <div class="task">Task: {{ task.text }}</div>
+                                <div class="task" id="{{ task.id }}">Task: {{ task.text }}</div>
                             {% endfor %}
                         {% else %}
-                            <p>No tasks yet for this project</p>
+                            <p>No tasks for this project yet</p>
                         {% endif %}
                     </div>
                     <input type="text" class="add-task" placeholder="Add new task">
                 </div>
             {% endfor %}
-        {% else %}
-            <p>No projects yet</p>
-    {% endif %}
+        {% endif %}
+        <a id="add-project" class="fa-solid fa-circle-plus fa-xl" href="{% url 'tasks:new_project' %}"></a>
     </div>
     <script type="text/javascript" src="{% static 'js/home.js' %}"></script>
 {% endblock %}
