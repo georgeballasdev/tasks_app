@@ -1,11 +1,17 @@
 {% extends 'tasks/base.html' %}
+{% load static %}
 {% block content %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <h1>{{ user.username }}'s projects</h1>
     <div id="projects">
         {% if projects %}
             {% for project in projects %}
                 <div class="project">
-                    <div class="project-title">{{ project.title }}</div>
+                    <div class="project-title">
+                        <div class="title-text">{{ project.title }}</div>
+                        <div class="add-button fa-solid fa-circle-plus fa-xs"></div>
+                    </div>
                     <div class="tasks">
                         {% if project.tasks %}
                             {% for task in project.tasks.all %}
@@ -15,10 +21,12 @@
                             <p>No tasks yet for this project</p>
                         {% endif %}
                     </div>
+                    <input type="text" class="add-task" placeholder="Add new task">
                 </div>
             {% endfor %}
         {% else %}
             <p>No projects yet</p>
     {% endif %}
     </div>
+    <script type="text/javascript" src="{% static 'js/home.js' %}"></script>
 {% endblock %}
