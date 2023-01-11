@@ -21,18 +21,12 @@ def add_task(request, id):
     return HttpResponseNotAllowed
 
 @login_required
-def remove_project(request, id):
-    if request.method == 'POST':
-        project = Project.objects.get(id=id)
-        project.delete()
-        return JsonResponse({})
-    return HttpResponseNotAllowed
-
-@login_required
-def remove_task(request, id):
-    if request.method == 'POST':
-        task = Task.objects.get(id=id)
-        task.delete()
+def remove_model(request, id, model_name):
+    models = {'project': Project, 'task': Task}
+    if request.method == 'POST' and model_name in models:
+        model = models[model_name]
+        obj = model.objects.get(id=id)
+        obj.delete()
         return JsonResponse({})
     return HttpResponseNotAllowed
 

@@ -13,12 +13,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="navbar">
-            <div><a href="{% url 'tasks:home' %}">Home</a></div>
-            <div><a href="{% url 'accounts:logout' %}">Logout</a></div>
-        </div>
-        <div id="content">{% block content %}{% endblock %}</div>
+    <div id="info">INFORMATION</div>
+    <div id="navbar">
+        <div><a href="{% url 'tasks:home' %}">Home</a></div>
+        <div><a href="{% url 'accounts:logout' %}">Logout</a></div>
     </div>
+    <div id="content">{% block content %}{% endblock %}</div>
 </body>
 </html>
