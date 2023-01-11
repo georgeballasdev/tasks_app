@@ -21,7 +21,11 @@
                             <p>No tasks for this project yet</p>
                         {% endif %}
                     </div>
-                    <input type="text" class="add-task" placeholder="Add new task">
+                    <form method="POST" class="add-task">
+                        {% csrf_token %}
+                        <input type="text" name="task" placeholder="Add new task">
+                        <button type="submit">Submit</button>
+                    </form>
                 </div>
             {% endfor %}
         {% endif %}

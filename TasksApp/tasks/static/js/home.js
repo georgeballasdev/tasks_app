@@ -1,6 +1,3 @@
-// Variables
-
-
 // Functions
 function smoothRemove(elm) {
     $(elm).fadeTo(300, 0.01, function(){ 
@@ -11,6 +8,10 @@ function smoothRemove(elm) {
 }
 
 // Events
+$('.project-title').click(function(e) {
+    let id = $(this).closest('.project').attr('id');
+    window.location.href = 'http://' + window.location.host + '/project/' + id + '/';
+})
 $('.project-title').mouseenter(function() {
     let title = $(this).find('.title-text')[0];
     if (title.scrollWidth > title.offsetWidth){
@@ -29,23 +30,21 @@ $('.project-title').mouseleave(function() {
 
 $('.project').click(function(e) {
     let target = e.target;
+    let project = this;
 
     // Add task button clicked
     if (target.classList.contains('add-button')){
-        let addTask = $(this).find('.add-task');
+        let addTask = $(project).find('.add-task');
+        let textInput = $(addTask).find('input[name=task]');
         addTask.show();
-        addTask.focus();
-        $(addTask).keypress(function(e) {
-            if (e.key == 'Enter') {
-                console.log('Send ajax for new task');
-            }
-        })
+        textInput.focus();
     }
 
     // Remove project button clicked
     else if (target.classList.contains('remove-button')){
-        let project = this;
         let title = $($(project).find('.title-text')).text();
+        let id = $(project).attr('id');
+        let token = $(project).find('input[name=csrfmiddlewaretoken]').val();
         $.confirm({
             boxWidth: '40%',
             useBootstrap: false,
@@ -53,7 +52,11 @@ $('.project').click(function(e) {
             content: 'Delete this project?',
             buttons: {
                 delete: function () {
-                    console.log('Send ajax to remove project');
+                    $.ajax({     
+                        url: 'http://' + window.location.host + '/ajax/remove-project/' + id + '/',
+                        type: 'POST',
+                        data: {csrfmiddlewaretoken: token},
+                    });
                     smoothRemove(project);
                 },
                 cancel: function () {}
@@ -64,19 +67,46 @@ $('.project').click(function(e) {
     // Task clicked
     else if (target.classList.contains('task')){
         let task_id = $(target).attr('id');
-        console.log(window.location.host + '/' + task_id);
+        let token = $(project).find('input[name=csrfmiddlewaretoken]').val();
+        $.ajax({     
+            url: 'http://' + window.location.host + '/ajax/remove-task/' + task_id + '/',
+            type: 'POST',
+            data: {csrfmiddlewaretoken: token},
+        });
         smoothRemove(target);
-    }
-
-    // Go to project detail view
-    else {
-        let id = $(this).attr('id');
-        window.location.href = 'http://' + window.location.host + '/project/' + id + '/';
     }
 })
 
 $('.project').mouseleave(function() {
     let addTask = $(this).find('.add-task');
-    addTask.val('');
+    let textInput = $(addTask).find('input[name=task]');
+    textInput.val('');
     addTask.hide();
+})
+
+$('.add-task').submit(function(e) {
+    e.preventDefault();
+    let project = $(this).closest('.project');
+    let id = $(project).attr('id');
+    let taskInput = $(this).find('input[name=task]');
+    let taskText = taskInput.val();
+    let token = $(this).find('input[name=csrfmiddlewaretoken]').val();
+    $.ajax({     
+        url: 'http://' + window.location.host + '/ajax/add-task/' + id + '/',
+        type: 'POST',
+        data: {
+            task: taskText,
+            csrfmiddlewaretoken: token
+        },
+        success: function(data) {
+            var new_task = $('<div></div>').text(data['task']);
+            $(new_task).attr({'id': data['task_id'], 'class': 'task'});
+            let tasks = $(project).find('.tasks');
+            if ($(tasks).find('p').length > 0){
+                $(tasks).empty();
+            };
+            $(tasks).append(new_task);
+        }
+    });
+    $(taskInput).val('');
 })
