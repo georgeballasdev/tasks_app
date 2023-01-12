@@ -2,16 +2,21 @@
 {% load static %}
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/project.css' %}">
-    <div id="project">
-        <div id="title">{{ project.title }}</div>
-        <div id="tasks">
+    <div class="title">{{ project.title }}</div>
+    <div class="project" id="{{ project.id }}">
+        <div class="tasks">
+            <h2>Tasks:</h2>
             {% if project.tasks.all %}
                 {% for task in project.tasks.all %}
-                    <div class="task">{{ task.text }}</div>
+                    <div class="task" id="{{ task.id }}">{{ task.text }}</div>
                 {% endfor %}
             {% else %}
-                <p>No tasks yet for this project</p>
+                <p>No tasks for this project yet</p>
             {% endif %}
         </div>
-        <input type="text" id="add-task" placeholder="Add new task">
+            <form method="POST" class="add-task">
+                {% csrf_token %}
+                <input type="text" id="task-input" name="task" placeholder="Add new task">
+            </form>
+    <script type="text/javascript" src="{% static 'js/project_handler.js' %}"></script>
 {% endblock %}

@@ -1,0 +1,47 @@
+.project {
+    width: 100%;
+    letter-spacing: 0.15rem;
+    padding-bottom: 10rem;
+}
+
+.title {
+    font-size: 5rem;
+    padding: 3rem;
+}
+
+.tasks {
+    background-color: rgb(0, 204, 255);
+    font-size: 1.5rem;
+    display: flex;
+    height: 85%;
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 1rem;
+}
+
+.task {
+    font-size: 3rem;
+    width: 90%;
+    letter-spacing: 0.15rem;
+    color: black;
+    word-wrap: break-word;
+    background-color: antiquewhite;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+}
+
+#task-input {
+    color: black;
+    width: 40%;
+    height: 10%;
+    border-radius: 1rem;
+    font-size: 3rem;
+    position: absolute;
+    bottom: 5%;
+    right: 30%;
+    left: 30%;
+    padding: 1rem;
+}

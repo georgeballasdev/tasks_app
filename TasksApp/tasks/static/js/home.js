@@ -1,33 +1,3 @@
-// Variables
-const infoBox = $('#info');
-
-// Functions
-function appendTask(response, project) {
-    let new_task = $('<div></div>').text(response['task']);
-    $(new_task).attr({'id': response['taskId'], 'class': 'task'});
-    let tasks = $(project).find('.tasks');
-    if ($(tasks).find('p').length > 0){
-        $(tasks).empty();
-    };
-    $(tasks).append(new_task);
-}
-
-function newInfo(info) {
-    $(infoBox).css({bottom: '-20%'});
-    infoBox.text(info);
-    $(infoBox).animate({bottom: '5%'}, 1000);
-    setTimeout(() => {$(infoBox).animate({bottom: '-20%'}, 1000)}, 3000);
-}
-
-function smoothRemove(elm) {
-    $(elm).fadeTo(300, 0.01, () => { 
-        $(elm).slideUp(150, () => {
-            $(elm).remove(); 
-        }); 
-    });
-}
-
-// Events
 $('.project-title').click(function(e) {
     let id = $(this).closest('.project').attr('id');
     window.location.href = 'http://' + window.location.host + '/project/' + id + '/';
@@ -84,19 +54,6 @@ $('.project').click(function(e) {
             },
         });
     }
-
-    // Task clicked
-    else if (target.classList.contains('task')){
-        let taskId = $(target).attr('id');
-        let token = $(project).find('input[name=csrfmiddlewaretoken]').val();
-        $.ajax({     
-            type: 'POST',
-            url: 'http://' + window.location.host + '/ajax/remove-task/' + taskId + '/',
-            data: {csrfmiddlewaretoken: token},
-        });
-        smoothRemove(target);
-        newInfo('Task removed');
-    }
 })
 
 $('.project').mouseleave(function() {
@@ -104,23 +61,4 @@ $('.project').mouseleave(function() {
     let taskInput = $(taskForm).find('input[name=task]');
     taskInput.val('');
     taskForm.hide();
-})
-
-$('.add-task').submit(function(e) {
-    e.preventDefault();
-    let project = $(this).closest('.project');
-    let id = $(project).attr('id');
-    let taskInput = $(this).find('input[name=task]');
-    let token = $(this).find('input[name=csrfmiddlewaretoken]').val();
-    $.ajax({     
-        type: 'POST',
-        url: 'http://' + window.location.host + '/ajax/add-task/' + id + '/',
-        data: {
-            task: taskInput.val(),
-            csrfmiddlewaretoken: token
-        },
-        success: (response) => appendTask(response, project)
-    });
-    $(taskInput).val('');
-    newInfo('Task added');
 })
