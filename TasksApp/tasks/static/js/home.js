@@ -30,30 +30,6 @@ $('.project').click(function(e) {
         taskForm.show();
         taskInput.focus();
     }
-
-    // Remove project button clicked
-    else if (target.classList.contains('remove-button')){
-        $.confirm({
-            boxWidth: '40%',
-            useBootstrap: false,
-            title: $($(project).find('.title-text')).text(),
-            content: 'Delete this project?',
-            buttons: {
-                delete: () => {
-                    let id = $(project).attr('id');
-                    let token = $(project).find('input[name=csrfmiddlewaretoken]').val();
-                    $.ajax({     
-                        url: 'http://' + window.location.host + '/ajax/remove-project/' + id + '/',
-                        type: 'POST',
-                        data: {csrfmiddlewaretoken: token},
-                    });
-                    smoothRemove(project);
-                    newInfo('Project removed');
-                },
-                cancel: () => {}
-            },
-        });
-    }
 })
 
 $('.project').mouseleave(function() {

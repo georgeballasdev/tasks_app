@@ -2,8 +2,8 @@
 {% load static %}
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/project.css' %}">
-    <div class="title">{{ project.title }}</div>
     <div class="project" id="{{ project.id }}">
+        <div class="title">{{ project.title }}<span class="remove-button fa-regular fa-circle-xmark fa-xs"></span></div>
         <div class="tasks">
             <h2>Tasks:</h2>
             {% if project.tasks.all %}

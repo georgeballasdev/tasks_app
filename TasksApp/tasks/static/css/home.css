@@ -10,15 +10,15 @@
 .project {
     height: 15rem;
     width: 20rem;
-    background-color: rgba(0, 255, 255, 0.761);
-    color: rgb(239, 239, 238);
+    background-color: var(--second-bg-color);
+    color: var(--offwhite);
     font-size: 2rem;
     border-radius: 1.5rem;
     position: relative;
 }
 
 .project:hover {
-    box-shadow: 0 0 20px 0.1rem rgba(132, 7, 7, 0.63);
+    box-shadow: 0 0 20px 0.1rem var(--nav-bg-color);
     transform: scale(1.01);
 }
 
@@ -37,8 +37,8 @@
     border-top-right-radius: 1.5rem;
     width: 100%;
     height: 15%;
-    background-color: rgb(99, 99, 218);
-    color: rgb(239, 239, 238);
+    background-color: var(--third-bg-color);
+    color: var(--offwhite);
     font-size: 2rem;
     overflow: hidden;
     white-space: nowrap;
@@ -49,7 +49,7 @@
 .title-text {
     left: 0;
     position: relative;
-    color: black;
+    color: var(--offwhite);
 }
 
 .add-button,
@@ -66,7 +66,7 @@
 
 .remove-button {
     bottom: 1.1rem;
-    color: red;
+    color: var(--nav-bg-color);
 }
 
 .add-button:hover,
@@ -93,9 +93,9 @@
 .task {
     font-size: 1.5rem;
     letter-spacing: 0.15rem;
-    color: black;
+    color: var(--offblack);
     word-wrap: break-word;
-    background-color: antiquewhite;
+    background-color: var(--main-bg-color);;
     padding: 0.5rem;
     border-radius: 1.5rem;
     text-decoration: none;
@@ -110,17 +110,27 @@
 .add-task {
     display: none;
     position: relative;
+}
+
+.add-task input {
+    position: absolute;
     width: 80%;
-    height: 20%;
-    bottom: 22%;
+    height: 100%;
+    bottom: 30%;
+    left: 5%;
     border-radius: 1rem;
     font-size: 1rem;
+    text-align: center;
     padding: 0 1rem;
+}
+
+.add-task button {
+    opacity: 0;
 }
 
 #add-project {
     font-size: 12rem;
-    color: rgb(141, 41, 56);
+    color: var(--nav-bg-color);;
     text-decoration: none;
     align-self: center;
 }

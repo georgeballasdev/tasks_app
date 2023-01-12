@@ -1,10 +1,12 @@
 {% extends 'tasks/base.html' %}
 {% load static %}
 {% block content %}
-    <h1>New project</h1>
-    <form method="POST">
+    <link rel="stylesheet" href="{% static 'css/new_project.css' %}">
+    <div id="project">
+        <div id="title">New project</div>
+        <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit">
-    </form>
+        </form>
+    </div>
 {% endblock %}

@@ -1,6 +1,16 @@
+:root {
+    --main-bg-color: #FCFFE7;
+    --nav-bg-color: #EB455F;
+    --second-bg-color: #BAD7E9;
+    --third-bg-color: #2B3467;
+    --offwhite: #F8F0E3;
+    --offblack: #212427;
+  }
+
 body {
     margin: 0;
     overflow: hidden;
+    font-family: "Montserrat", sans-serif;
 }
 
 #info {
@@ -9,7 +19,7 @@ body {
     left: 80%;
     height: auto;
     width: auto;
-    background-color: rgba(167, 180, 199, 0.672);
+    background-color: var(--second-bg-color);
     border-radius: 5rem;
     z-index: 10;
     text-align: center;
@@ -25,11 +35,11 @@ body {
     position: sticky;
     width: 100%;
     height: 10vh;
-    background-color: rgba(208, 62, 10, 0.855);
+    background-color: var(--nav-bg-color);
 }
 
 #navbar div a{
-    color:rgb(11, 3, 80);
+    color: var(--offblack);
     font-size: 2rem;
     font-weight: 700;
     text-decoration: none;
@@ -39,7 +49,7 @@ body {
 #content {
     padding: 0 10rem;
     height: 90vh;
-    background-color: rgb(244, 216, 205);
+    background-color: var(--main-bg-color);
     text-align: center;
     overflow-y: scroll;
     /* Hide scrollbar in Firefox and IE */

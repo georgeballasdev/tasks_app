@@ -7,10 +7,25 @@
 .title {
     font-size: 5rem;
     padding: 3rem;
+    position: relative;
+}
+
+.remove-button {
+    font-size: 8rem;
+    color: var(--nav-bg-color);
+    position: absolute;
+    right: 0;
+    bottom: 50%;
+}
+
+.remove-button:hover {
+    font-size: 9rem;
 }
 
 .tasks {
-    background-color: rgb(0, 204, 255);
+    background-color: var(--second-bg-color);;
+    border: 0.5px solid var(--offblack);
+    border-radius: 2rem;
     font-size: 1.5rem;
     display: flex;
     height: 85%;
@@ -26,15 +41,23 @@
     font-size: 3rem;
     width: 90%;
     letter-spacing: 0.15rem;
-    color: black;
+    color: var(--offblack);
     word-wrap: break-word;
-    background-color: antiquewhite;
+    background-color: var(--main-bg-color);;
     padding: 0.5rem;
     border-radius: 1.5rem;
+    text-decoration: none;
+    user-select: none;
+}
+
+.task:hover {
+    text-decoration: line-through;
+    transform: scale(1.03);
 }
 
 #task-input {
-    color: black;
+    color: var(--offblack);
+    text-align: center;
     width: 40%;
     height: 10%;
     border-radius: 1rem;

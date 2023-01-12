@@ -1,0 +1,30 @@
+#project {
+    width: 100%;
+    letter-spacing: 1.5rem;
+    padding-bottom: 10rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#title {
+    font-size: 5rem;
+    padding: 1rem;
+}
+
+form p{
+    font-size: 4rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 3rem;
+}
+
+form p input {
+    font-size: 4rem;
+    text-align: center;
+    width: 180%;
+    height: 10%;
+    border-radius: 1rem;
+    padding: 1rem;
+}
