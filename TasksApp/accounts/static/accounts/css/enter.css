@@ -1,0 +1,34 @@
+:root {
+    --main-bg-color: #FCFFE7;
+    --nav-bg-color: #EB455F;
+    --second-bg-color: #BAD7E9;
+    --third-bg-color: #2B3467;
+    --offwhite: #F8F0E3;
+    --offblack: #212427;
+  }
+
+body {
+    margin: 0;
+    padding: 3rem 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    background-color: var(--nav-bg-color);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 3rem;
+}
+
+.section {
+    background-color: var(--main-bg-color);
+    width: 90%;
+    height: auto;
+}
+
+.section form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+  

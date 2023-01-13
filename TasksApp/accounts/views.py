@@ -3,15 +3,12 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from .forms import LoginForm, RegisterForm
 
-@login_required
-def profile(request):
-    return render(request, 'accounts/profile.html')
 
 def enter(request, error=None):
     login_form = LoginForm()
     register_form = RegisterForm()
     context = {'login_form':login_form, 'register_form': register_form, 'error': error}
-    return render(request, 'accounts/login.html', context)
+    return render(request, 'accounts/enter.html', context)
 
 def user_login(request):
     if request.method == 'POST':

@@ -1,3 +1,5 @@
+const token = $('#csrf-token').val();
+
 function appendTask(response, project) {
     let new_task = $('<div></div>').text(response['task']);
     $(new_task).attr({'id': response['task_id'], 'class': 'task'});
@@ -8,7 +10,6 @@ function appendTask(response, project) {
 
 function removeTask(target) {
     let taskId = $(target).attr('id');
-    let token = $('input[name=csrfmiddlewaretoken]').val();
     $.ajax({     
         type: 'POST',
         url: 'http://' + window.location.host + '/ajax/remove-task/' + taskId + '/',
@@ -27,7 +28,6 @@ function removeProject(project) {
         buttons: {
             delete: () => {
                 let id = $(project).attr('id');
-                let token = $(project).find('input[name=csrfmiddlewaretoken]').val();
                 $.ajax({     
                     url: 'http://' + window.location.host + '/ajax/remove-project/' + id + '/',
                     type: 'POST',
@@ -59,7 +59,6 @@ $('.add-task').submit(function(e) {
     let project = $(this).closest('.project');
     let id = $(project).attr('id');
     let taskInput = $(this).find('input[name=task]');
-    let token = $(this).find('input[name=csrfmiddlewaretoken]').val();
     $.ajax({     
         type: 'POST',
         url: 'http://' + window.location.host + '/ajax/add-task/' + id + '/',

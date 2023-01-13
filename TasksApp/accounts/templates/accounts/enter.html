@@ -7,20 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasks App</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <link rel="stylesheet" href="{% static 'tasks/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/css/enter.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 </head>
 <body>
-    <input type="hidden" id="csrf-token" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-    <div id="info">INFORMATION</div>
-    <div id="navbar">
-        <div><a href="{% url 'tasks:home' %}">Home</a></div>
-        <div><a href="{% url 'accounts:logout' %}">Logout</a></div>
+    <div id="login" class="section">
+        <div class="title">Login</div>
+        <form method="POST" action="{% url 'accounts:login' %}">
+            {% csrf_token %}
+            {{ login_form.as_p }}
+            <input type="submit" value="Login" name="login">
+        </form>
     </div>
-    <div id="content">{% block content %}{% endblock %}</div>
-    <script type="text/javascript" src="{% static 'tasks/js/helper_functions.js' %}"></script>
+    <div id="register" class="section">
+        <div class="title">Register</div>
+        <form method="POST" action="{% url 'accounts:register' %}">
+            {% csrf_token %}
+            {{ register_form.as_p }}
+            <input type="submit" value="Register" name="register">
+        </form>
+    </div>
+    <script type="text/javascript" src="{% static 'accounts/js/enter.js' %}"></script>
 </body>
-</html>
+</html> 

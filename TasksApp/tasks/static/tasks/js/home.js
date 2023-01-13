@@ -1,4 +1,4 @@
-$('.project-title').click(function(e) {
+$('.project-title').click(function() {
     let id = $(this).closest('.project').attr('id');
     window.location.href = 'http://' + window.location.host + '/project/' + id + '/';
 })
@@ -19,17 +19,11 @@ $('.project-title').mouseleave(function() {
     }
 })
 
-$('.project').click(function(e) {
-    let target = e.target;
-    let project = this;
-
-    // Add task button clicked
-    if (target.classList.contains('add-button')){
-        let taskForm = $(project).find('.add-task');
+$('.add-button').click(function(e) {
+        let taskForm = $(this).siblings('.add-task');
         let taskInput = $(taskForm).find('input[name=task]');
         taskForm.show();
         taskInput.focus();
-    }
 })
 
 $('.project').mouseleave(function() {
@@ -37,4 +31,8 @@ $('.project').mouseleave(function() {
     let taskInput = $(taskForm).find('input[name=task]');
     taskInput.val('');
     taskForm.hide();
+})
+
+$('#add-project').click( () => {
+    window.location.href = 'http://' + window.location.host + '/new-project/';
 })

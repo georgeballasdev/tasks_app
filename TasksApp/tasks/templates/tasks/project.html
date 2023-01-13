@@ -1,7 +1,7 @@
 {% extends 'tasks/base.html' %}
 {% load static %}
 {% block content %}
-    <link rel="stylesheet" href="{% static 'css/project.css' %}">
+    <link rel="stylesheet" href="{% static 'tasks/css/project.css' %}">
     <div class="project" id="{{ project.id }}">
         <div class="title">{{ project.title }}<span class="remove-button fa-regular fa-circle-xmark fa-xs"></span></div>
         <div class="tasks">
@@ -18,5 +18,5 @@
                 {% csrf_token %}
                 <input type="text" id="task-input" name="task" placeholder="Add new task">
             </form>
-    <script type="text/javascript" src="{% static 'js/project_handler.js' %}"></script>
+    <script type="text/javascript" src="{% static 'tasks/js/project_handler.js' %}"></script>
 {% endblock %}

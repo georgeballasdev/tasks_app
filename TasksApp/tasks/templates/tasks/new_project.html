@@ -1,7 +1,7 @@
 {% extends 'tasks/base.html' %}
 {% load static %}
 {% block content %}
-    <link rel="stylesheet" href="{% static 'css/new_project.css' %}">
+    <link rel="stylesheet" href="{% static 'tasks/css/new_project.css' %}">
     <div id="project">
         <div id="title">New project</div>
         <form method="POST">
@@ -9,4 +9,7 @@
         {{ form.as_p }}
         </form>
     </div>
+    <script>
+        document.getElementById("id_title").focus();
+    </script>
 {% endblock %}

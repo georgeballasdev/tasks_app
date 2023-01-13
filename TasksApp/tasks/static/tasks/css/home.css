@@ -129,12 +129,15 @@
 }
 
 #add-project {
-    font-size: 12rem;
+    font-size: 9rem;
     color: var(--nav-bg-color);;
-    text-decoration: none;
-    align-self: center;
+    height: 15rem;
+    width: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #add-project:hover {
-    font-size: 13rem;
+    font-size: 10rem;
 }
