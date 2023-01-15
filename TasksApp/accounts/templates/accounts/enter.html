@@ -14,7 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 </head>
 <body>
-    <div id="login" class="section">
+    <div class="section">
         <div class="title">Login</div>
         <form method="POST" action="{% url 'accounts:login' %}">
             {% csrf_token %}
@@ -22,7 +22,11 @@
             <input type="submit" value="Login" name="login">
         </form>
     </div>
-    <div id="register" class="section">
+    <div id="separator">
+        <div>REGISTER</div>
+        <div>LOGIN</div>
+    </div>
+    <div class="section">
         <div class="title">Register</div>
         <form method="POST" action="{% url 'accounts:register' %}">
             {% csrf_token %}
