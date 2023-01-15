@@ -1,14 +1,12 @@
 const separator = $('#separator');
 const body = $('html, body');
-let state = 'login';
 
 $(separator).click( () => {
-    if (state == 'login') {
-        body.animate({scrollLeft: 0}, 800);
-        state = 'register';
+    if (body.scrollLeft() == 0) {
+        var scrollTo = body.width();
     }
     else {
-        body.animate({scrollLeft: body.width()}, 800);
-        state = 'login';
+        var scrollTo = 0;
     }
+    body.animate({scrollLeft: scrollTo}, 800);
 })
