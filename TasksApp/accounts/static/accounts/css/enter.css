@@ -17,19 +17,16 @@ body {
     display: flex;
     align-items: center;
     justify-content:center;
-    overflow-y: hidden;
+    overflow: hidden;
     width: 200vw;
 }
 
 .section {
-    background-color: var(--main-bg-color);
+    width: 100%;
     height: 80vh;
-}
-
-.section form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    display: grid;
+    place-items: center;
+    background-color: var(--main-bg-color);
 }
 
 #separator {
@@ -46,4 +43,90 @@ body {
     flex-direction: column;
     justify-content:center;
     row-gap: 2vw;
+}
+
+#separator div {
+    transition: .2s ease-out;
+}
+
+#separator:hover div{
+    scale: 1.1;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
+.field {
+    position: relative;
+    margin: 1rem 0;
+}
+
+.field label {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    transition: .3s ease-out;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.field input {
+    width: 100%;
+    padding-top: 2.25rem;
+    padding-bottom: .5rem;
+    padding-inline: 1rem;
+    margin-bottom: 1rem;
+    outline: none;
+    border: none;
+    border-bottom: 1.7px solid var(--offblack);
+    background: transparent;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.field .help-text {
+    width: 200%;
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: .2s ease-in;
+    opacity: 0;
+    text-align: center;
+    font-size: 1.5rem;
+}
+    
+.field input:focus ~ label {
+    top: -10px;
+    left: 50%;
+    font-size: 1rem;
+    }
+
+.field input:focus ~ .help-text {
+    opacity: 1;
+}
+
+.button {
+    padding: 1rem;
+    border: none;
+    border-radius: 50px;
+    background-color: var(--second-bg-color);
+    color: var(--nav-bg-color);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: .2s ease-out;
+    text-decoration: none;
+}
+
+.button:hover {
+    scale: 1.2;
+    background-color: var(--third-bg-color);
+    color: var(--offwhite);
 }

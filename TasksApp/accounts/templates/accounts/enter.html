@@ -18,8 +18,20 @@
         <div class="title">Login</div>
         <form method="POST" action="{% url 'accounts:login' %}">
             {% csrf_token %}
-            {{ login_form.as_p }}
-            <input type="submit" value="Login" name="login">
+            {% for field in login_form %}
+            <div class="field">
+                {{ field }}
+                {{ field.label_tag }}
+                <div class="help-text">
+                    {{ field.help_text }}
+                </div>
+                {% if field.errors %}
+                {{ field.errors }}
+                {% endif %}
+            </div>
+            {% endfor %}
+            <input class="button" type="submit" value="Login" name="login">
+            <a href="{% url 'accounts:demo' %}" class="button">Demo Login</a>
         </form>
     </div>
     <div id="separator">
@@ -30,8 +42,19 @@
         <div class="title">Register</div>
         <form method="POST" action="{% url 'accounts:register' %}">
             {% csrf_token %}
-            {{ register_form.as_p }}
-            <input type="submit" value="Register" name="register">
+            {% for field in register_form %}
+            <div class="field">
+                {{ field }}
+                {{ field.label_tag }}
+                <div class="help-text">
+                    {{ field.help_text }}
+                </div>
+                {% if field.errors %}
+                {{ field.errors }}
+                {% endif %}
+            </div>
+            {% endfor %}
+            <input class="button" type="submit" value="Register" name="register">
         </form>
     </div>
     <script type="text/javascript" src="{% static 'accounts/js/enter.js' %}"></script>

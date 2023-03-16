@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from .forms import LoginForm, RegisterForm
 
@@ -26,9 +27,18 @@ def user_logout(request):
 
 def user_register(request):
     if request.method == 'POST':
-        register_form = RegisterForm(request.POST)
-        if register_form.is_valid():
-            user = register_form.save()
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = User.objects.create(
+                username=form.cleaned_data['username'],
+                password=make_password(form.cleaned_data['password']),
+                email=form.cleaned_data['email']
+            )
             login(request, user)
             return redirect('tasks:home')
     return enter(request, 'Not valid credentials')
+
+def demo(request):
+    user = User.objects.get(username='Demo')
+    login(request, user)
+    return redirect('tasks:home')

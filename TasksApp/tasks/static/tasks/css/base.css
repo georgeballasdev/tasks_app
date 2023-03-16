@@ -38,12 +38,17 @@ body {
     background-color: var(--nav-bg-color);
 }
 
-#navbar div a{
+#navbar div a {
     color: var(--offblack);
     font-size: 2rem;
     font-weight: 700;
     text-decoration: none;
     margin: auto 20rem;
+    transition: .2s ease-in;
+}
+
+#navbar div a:hover {
+    color: var(--offwhite);
 }
 
 #content {
